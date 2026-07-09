@@ -793,5 +793,46 @@ notes(s, (
 "(biais d'implication) ? Restez calme, reformulez la question, appuyez-vous sur vos verbatims."
 ))
 
+# ================================================================ 22. SIGNATURE / MISE EN ABYME
+s = slide()
+bg(s, NAVY)
+rect(s, 0, 0, 13.333, 0.28, ACCENT)
+rect(s, 0, 7.22, 13.333, 0.28, ACCENT)
+# décor : anneaux concentriques + losange ambré
+ring = RGBColor(0x24, 0x46, 0x6B)
+for r in (1.5, 1.05, 0.62):
+    rect(s, 10.8 - r, 2.5 - r, 2*r, 2*r, None, line=ring, lw=1.25, shape=MSO_SHAPE.OVAL)
+rect(s, 10.8 - 0.33, 2.5 - 0.33, 0.66, 0.66, ACCENT, shape=MSO_SHAPE.DIAMOND)
+# eyebrow
+rect(s, 0.9, 1.30, 0.16, 0.16, ACCENT, shape=MSO_SHAPE.DIAMOND)
+txt(s, 1.2, 1.19, 9.5, 0.4, [[("MISE EN ABYME   ·   CLIN D'ŒIL FINAL", 12.5, True, ACCENT, BODY)]], space_after=0)
+# titre serif
+txt(s, 0.9, 1.9, 9.6, 1.7, [[("Réalisé avec Claude,", 34, True, WHITE, HEAD)],
+    [("une intelligence artificielle", 34, True, WHITE, HEAD)]], space_after=2, line_spacing=1.0)
+rect(s, 0.93, 3.62, 1.5, 0.05, ACCENT)
+txt(s, 0.9, 3.92, 10.5, 0.8,
+    [[("Le sujet de ce mémoire — l'intégration de l'IA — mis en pratique jusque dans sa soutenance.",
+       17, False, RGBColor(0xD8,0xE2,0xEE), HEAD, True)]], space_after=0, line_spacing=1.05)
+txt(s, 0.9, 4.82, 10.9, 1.0,
+    [[("L'intelligence artificielle y a servi d'outil d'appui — recherche documentaire, structuration et mise en forme — au service d'un travail pensé, piloté, relu et assumé par son auteur.",
+       12.5, False, RGBColor(0x93,0xA6,0xBD), BODY)]], space_after=0, line_spacing=1.15)
+# méta bas
+rect(s, 0.9, 6.18, 11.5, 0.02, RGBColor(0x2A,0x47,0x6A))
+mx = 0.9
+for lab, val in [("AUTEUR","Maxime LOUSTALET"), ("OUTIL D'APPUI","Claude — Anthropic"),
+                 ("PRINCIPE","L'IA assiste, l'humain décide")]:
+    txt(s, mx, 6.36, 3.6, 0.3, [[(lab, 9.5, True, ACCENT, BODY)]], space_after=0)
+    txt(s, mx, 6.63, 3.7, 0.35, [[(val, 12.5, True, WHITE, BODY)]], space_after=0)
+    mx += 3.75
+notes(s, (
+"[CLÔTURE ORIGINALE] Diapositive de clôture, à laisser affichée pendant les questions. "
+"C'est une mise en abyme assumée : ce mémoire porte sur l'intégration de l'IA, et sa soutenance a été "
+"préparée avec l'IA.\n\n"
+"Message à tenir si le jury en parle : l'IA a été un OUTIL d'appui — recherche, structuration, mise en "
+"forme — mais l'analyse, les choix et la rédaction restent les miens. « L'IA assiste, l'humain décide » : "
+"c'est exactement la posture d'usage raisonné que je défends dans mon mémoire. Terminer là-dessus montre "
+"une utilisation lucide, critique et transparente de l'outil."
+))
+
 prs.save("/home/user/maxime/Soutenance_MFE_LOUSTALET_Maxime.pptx")
 print("OK — slides:", len(prs.slides._sldIdLst))

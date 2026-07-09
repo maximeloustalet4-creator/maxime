@@ -513,6 +513,26 @@ SLIDES.append(slide("title", '<div class="bandtop"></div>'
   +'<div style="font-size:1.28cqw;color:#7C8FA8;margin-top:.5cqw">Directeur de recherche : Victor COMBES · Eklore-ed School of Management · 2025–2026</div>'
   +'</div>'))
 
+# ---- 22 SIGNATURE / MISE EN ABYME
+ai_deco = ('<svg class="deco" style="right:6cqw;top:9cqw;width:22cqw;height:22cqw;opacity:.42" viewBox="0 0 200 200" fill="none" stroke="#E6A339" stroke-width="1">'
+  '<circle cx="100" cy="100" r="86" opacity=".3"/><circle cx="100" cy="100" r="62" opacity=".45"/>'
+  '<circle cx="100" cy="100" r="38" opacity=".65"/>'
+  '<path d="M100 66l7 20 20 7-20 7-7 20-7-20-20-7 20-7z" fill="#E6A339" stroke="none" opacity=".9"/></svg>')
+SLIDES.append(slide("title",
+  '<div class="bandtop"></div>'
+  +'<div style="position:absolute;left:0;bottom:0;height:.9cqw;width:100%;background:linear-gradient(90deg,var(--amber),#F2C879 60%,var(--amber))"></div>'
+  + ai_deco
+  +'<div class="pad" style="justify-content:center">'
+  +'<div class="tkick">'+ic("spark","var(--amber)",1.9)+'&nbsp;Mise en abyme · clin d\'œil final</div>'
+  +'<div class="ttitle serif" style="font-size:4.7cqw;max-width:80%">Réalisé avec Claude,<br>une intelligence artificielle</div>'
+  +'<div class="rule" style="margin-top:1.9cqw"><i style="width:6cqw"></i><b></b></div>'
+  +'<div class="tsub serif" style="font-size:2.05cqw;max-width:82%">Le sujet de ce mémoire — l\'intégration de l\'IA — mis en pratique jusque dans sa soutenance.</div>'
+  +'<div class="tsub2" style="max-width:80%;margin-top:1.3cqw">L\'intelligence artificielle y a servi d\'outil d\'appui — recherche documentaire, structuration et mise en forme — au service d\'un travail pensé, piloté, relu et assumé par son auteur.</div>'
+  +'</div>'
+  +'<div class="tmeta"><div><span class="lab">Auteur</span><b>Maxime LOUSTALET</b></div>'
+  +'<div><span class="lab">Outil d\'appui</span><b>Claude — Anthropic</b></div>'
+  +'<div><span class="lab">Principe</span><b>L\'IA assiste, l\'humain décide</b></div></div>'))
+
 # ---------------------------------------------------------------- ASSEMBLE
 SCRIPT = """
 <nav class="rail" id="rail"></nav>
@@ -536,7 +556,7 @@ HTML = ('<title>Soutenance MFE — Maxime LOUSTALET — Diaporama</title>\n<styl
   + '<div class="wrap"><div class="topbar"><div>'
   + '<h1>Soutenance de mémoire — Diaporama</h1>'
   + '<div class="sub">Maxime LOUSTALET · L\'intégration de l\'IA dans les PME — le cas d\'Arla Groupe · 2025–2026</div></div>'
-  + '<div class="hint">Navigation : <b>↑ ↓</b> ou molette · 21 diapositives</div></div>'
+  + '<div class="hint">Navigation : <b>↑ ↓</b> ou molette · 22 diapositives</div></div>'
   + '<div class="deck" id="deck">' + "\n".join(SLIDES) + '</div>'
   + '<div class="fnote">Aperçu web du diaporama — le fichier PowerPoint (.pptx) éditable reprend les mêmes diapositives et les notes du présentateur.</div>'
   + '</div>' + SCRIPT)
