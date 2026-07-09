@@ -37,9 +37,9 @@ def contrast(t): return NAVY if t==AMBER else "#fff"
 C=[
  (1,"Mémoire · Soutenance",None,NAVY,None,None,[],None,None),
  (2,"Contexte","bolt",BLUE,"≈14%","du PIB mondial capté par l'IA d'ici 2030 (~15 000 Md$).",
-   ["La PME : ressources limitées, dirigeant central, poids des traditions."],None,"Rouas & Al Meriouh, 2025 · Farsad, 2021"),
+   ["Industrie 4.0 : automatisation, données, IA partout.","La PME : ressources limitées, dirigeant central, traditions."],None,"Rouas & Al Meriouh, 2025 · Farsad, 2021"),
  (3,"Problématique","target",TEAL,"?","Intégrer l'IA sans trahir sa culture, ses moyens et sa façon de travailler.",
-   ["3 sous-questions : perception · freins · spécificités PME."],None,None),
+   ["3 sous-questions : perception · freins · spécificités PME.","Terrain : Arla Groupe, PME du bâtiment."],None,None),
  (4,"Cadre · la PME","book",AMBER,"<250","salariés, CA < 50 M€ : le seuil d'une PME (UE).",
    ["Dirigeant impliqué, proximité organisationnelle.","Culture & traditions de métier."],None,"Oriot & Misiaszek · Torrès · Schein · Blanchard & A.-C."),
  (5,"Cadre · l'IA","chip",SLATE,"2","visages de l'IA.",
@@ -55,7 +55,7 @@ C=[
  (10,"Préconisations","clipboard",SLATE,"3","leviers concrets pour Arla Groupe.",
    ["1 · Politique commune + référent IA.","2 · Formation par les pairs (quick wins).","3 · Démarche participative."],None,None),
  (11,"Conclusion","flag",TEAL,"↔","Autant d'humain que d'organisationnel.",
-   ["Les spécificités PME = un cadre, pas un mur.","Ouverture : une étude quantitative pour hiérarchiser."],None,None),
+   ["Les spécificités PME = un cadre, pas un mur.","Facteurs clés : dirigeant, proximité, identités métier.","Ouverture : une étude quantitative pour hiérarchiser."],None,None),
  (12,"Pour aller plus loin","qr",NAVY,None,None,[],None,None),
 ]
 
@@ -164,4 +164,9 @@ CSS=FONTS+"""
 reveal_html='<div class="reveal noprint"><div class="revgrid">%s</div><div class="revcap">Versos assemblés : le logo Éklore.</div></div>'%("".join(reveal))
 HTML='<title>Jeu de cartes — Soutenance MFE</title><style>%s</style>%s%s%s'%(CSS,reveal_html,sheets(fronts),sheets(backs))
 open(os.path.join(SCR,"cards.html"),"w",encoding="utf-8").write(HTML)
-print("cards.html OK — tuiles enrichies + repère de placement")
+
+# ---- Version "une carte par page" (import Canva) : fronts puis versos
+SINGLE_CSS=CSS+".page{width:88.9mm;height:63.5mm;page-break-after:always;overflow:hidden}.page .card{border-radius:0;box-shadow:none;outline:none;width:88.9mm;height:63.5mm}"
+pages="".join('<div class="page">%s</div>'%f for f in fronts)+"".join('<div class="page">%s</div>'%b for b in backs)
+open(os.path.join(SCR,"cards_single.html"),"w",encoding="utf-8").write('<title>Cartes une par page</title><style>%s</style>%s'%(SINGLE_CSS,pages))
+print("cards.html + cards_single.html OK — tuiles enrichies + repère de placement")
