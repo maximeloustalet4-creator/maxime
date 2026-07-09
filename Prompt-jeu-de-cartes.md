@@ -19,7 +19,9 @@ organisationnels — le cas d'Arla Groupe » (PME du bâtiment). Étude qualitat
 8 entretiens semi-directifs.
 
 CE QUE JE VEUX
-Un jeu de 12 cartes (format A6), une par grande partie de mon diaporama, dans l'ordre :
+Un jeu de 12 cartes au format carte à jouer PAYSAGE (88,9 × 63,5 mm), visuel et
+ludique (grande icône dans un pastille, panneau de couleur, formes/confettis, peu de
+texte), une par grande partie de mon diaporama, dans l'ordre :
 1 Ouverture (titre du mémoire) · 2 Contexte · 3 Problématique · 4 Cadre théorique PME ·
 5 Cadre théorique IA · 6 Méthodologie · 7 Résultat 1 (perception) · 8 Résultat 2
 (freins) · 9 Résultat 3 (dirigeant) · 10 Préconisations · 11 Conclusion · 12 Carte QR.
@@ -36,7 +38,7 @@ RECTO de chaque carte :
   « Réalisé avec l'appui de Claude — l'IA assiste, l'humain décide ».
 
 VERSO (l'effet « waouh ») :
-- les 12 dos, une fois les cartes posées en grille 4 colonnes × 3 rangées, doivent
+- les 12 dos, une fois les cartes posées en grille 3 colonnes × 4 rangées, doivent
   reconstituer EN MOSAÏQUE le logo de mon école (fichier joint) ;
 - pré-inverse (miroir horizontal) chaque tuile pour qu'un simple retournement de chaque
   carte sur place fasse apparaître le logo à l'endroit.
@@ -45,7 +47,7 @@ STYLE : sobre et pro (pas « jeu de société »), cohérent avec mon diaporama 
 bleu nuit + accent ambré, titres en serif élégant, beaucoup d'air.
 
 LIVRABLES
-1. Un PDF imprimable : 3 pages de fronts (4 cartes/A4) + 3 pages de dos (même ordre),
+1. Un PDF imprimable : 2 pages de fronts (8 cartes/A4) + 2 pages de dos (même ordre),
    avec traits de coupe.
 2. Un MODE D'EMPLOI : la grille finale, l'ordre de pose avec la phrase à dire en posant
    chaque carte, les consignes d'impression/collage et la « révélation » finale du logo.
