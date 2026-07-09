@@ -13,21 +13,23 @@ from pptx.oxml.ns import qn
 import copy
 
 # ---------------------------------------------------------------- PALETTE
-NAVY     = RGBColor(0x0E, 0x2A, 0x47)   # bleu nuit - primaire
-NAVY2    = RGBColor(0x16, 0x3A, 0x5F)   # bleu profond secondaire
-STEEL    = RGBColor(0x2E, 0x6E, 0x9E)   # bleu acier
-ACCENT   = RGBColor(0xE4, 0xA1, 0x1B)   # ambre (accent / bâtiment)
-ACCENT_D = RGBColor(0xC6, 0x86, 0x0E)   # ambre foncé
-LIGHT    = RGBColor(0xF4, 0xF6, 0xF9)   # fond clair
+NAVY     = RGBColor(0x0B, 0x2A, 0x4A)   # bleu nuit - primaire
+NAVY2    = RGBColor(0x12, 0x3A, 0x61)   # bleu profond secondaire
+STEEL    = RGBColor(0x3D, 0x6A, 0x8E)   # bleu acier
+ACCENT   = RGBColor(0xE6, 0xA3, 0x39)   # ambre (accent / bâtiment)
+ACCENT_D = RGBColor(0xAF, 0x71, 0x12)   # ambre foncé
+LIGHT    = RGBColor(0xED, 0xF2, 0xF6)   # fond clair (mist)
 CARD     = RGBColor(0xFF, 0xFF, 0xFF)
-CARD_ALT = RGBColor(0xED, 0xF1, 0xF6)
-TEXTD    = RGBColor(0x1A, 0x20, 0x33)   # texte foncé
-TEXTG    = RGBColor(0x55, 0x60, 0x7A)   # texte gris
+CARD_ALT = RGBColor(0xF7, 0xF2, 0xE8)   # crème chaud
+PAPER    = RGBColor(0xFC, 0xFB, 0xF8)   # papier chaud (fond diapo)
+TEXTD    = RGBColor(0x18, 0x24, 0x3C)   # texte foncé
+TEXTG    = RGBColor(0x54, 0x60, 0x7A)   # texte gris
 WHITE    = RGBColor(0xFF, 0xFF, 0xFF)
-LINE_G   = RGBColor(0xD7, 0xDD, 0xE6)
+LINE_G   = RGBColor(0xE6, 0xDF, 0xD3)   # filet chaud
 
-HEAD = "Calibri"
-BODY = "Calibri"
+SERIF = "Georgia"
+HEAD = "Georgia"   # titres / numéraux — allure éditoriale
+BODY = "Calibri"   # texte courant / labels
 
 prs = Presentation()
 prs.slide_width  = Inches(13.333)
@@ -105,12 +107,12 @@ def bullets(s, x, y, w, h, items, size=15, color=TEXTD, gap=9, lh=1.06,
 
 def header(s, kicker, title, num=None):
     """Top zone for content slides."""
-    bg(s, WHITE)
-    rect(s, 0, 0, 13.333, 1.5, WHITE)
+    bg(s, PAPER)
+    rect(s, 0, 0, 13.333, 1.5, PAPER)
     # left accent tab
     rect(s, 0, 0.0, 0.16, 1.5, ACCENT)
     txt(s, 0.75, 0.34, 11.5, 0.4,
-        [[(kicker.upper(), 12.5, True, STEEL, HEAD)]], space_after=0)
+        [[(kicker.upper(), 12, True, STEEL, BODY)]], space_after=0)
     txt(s, 0.75, 0.63, 11.9, 0.7,
         [[(title, 27, True, NAVY, HEAD)]], space_after=0)
     rect(s, 0.78, 1.32, 0.85, 0.055, ACCENT)
