@@ -6,23 +6,23 @@
 
 ---
 
-## 🗺️ La table finale — une infographie continue (grille 3 × 4)
+## 🗺️ La table finale — une infographie « chiffres clés » (grille 3 × 4)
 
-Les fronts sont conçus pour **s'enchaîner** : un **fil conducteur ambré** (ligne + nœuds + flèches) part de la carte 1 et **serpente** jusqu'à la 12. Une fois toutes posées, l'ensemble forme **une seule grande infographie**. Table totale ≈ **27 × 25 cm**.
-
-Le parcours suit un **serpent** (la flèche au bas de chaque carte te montre toujours la suite) :
+Chaque carte est une **tuile pleine couleur** (gros pictogramme + chiffre clé + légende courte + badge numéro). Une fois les 12 posées **dans l'ordre, ligne par ligne**, l'ensemble forme **une infographie** de ta démonstration. Table totale ≈ **27 × 25 cm**.
 
 ```
-   1  →  2  →  3
-                ↓
-   6  ←  5  ←  4
-   ↓
-   7  →  8  →  9
-                ↓
-  12  ← 11  ← 10          (● = fin, à gauche)
+┌──────────────┬──────────────┬──────────────┐
+│ 1  TITRE     │ 2  ≈14%      │ 3   ?        │
+├──────────────┼──────────────┼──────────────┤
+│ 4  < 250     │ 5   2        │ 6   8        │
+├──────────────┼──────────────┼──────────────┤
+│ 7  6/8       │ 8   ≠        │ 9  8/8       │
+├──────────────┼──────────────┼──────────────┤
+│ 10  3        │ 11  ↔        │ 12  QR code  │
+└──────────────┴──────────────┴──────────────┘
 ```
 
-> 💡 Tu n'as rien à mémoriser : **suis la flèche ambre**. Elle pointe à droite, à gauche ou vers le bas selon la carte.
+> 💡 Tu poses simplement **dans l'ordre des numéros** : 1‑2‑3 (1ʳᵉ ligne), 4‑5‑6, 7‑8‑9, 10‑11‑12. Le **badge numéroté** en haut à gauche de chaque carte te guide.
 
 ---
 
@@ -30,22 +30,22 @@ Le parcours suit un **serpent** (la flèche au bas de chaque carte te montre tou
 
 Pose la carte **au moment où tu annonces le titre**, en **un seul geste**, puis reviens à ton oral.
 
-| # | Tu annonces… | Tu poses la carte… |
+| # | Tu annonces… | Chiffre clé de la carte |
 |---|---|---|
-| 1 | *« L'intégration de l'IA dans les PME… »* (accroche) | en haut à gauche |
-| 2 | *« D'abord, le contexte. »* | **à droite** de la 1 |
-| 3 | *« D'où ma problématique. »* | **à droite** de la 2 |
-| 4 | *« Ce que dit la théorie sur la PME. »* | **en dessous** de la 3 |
-| 5 | *« …et sur l'IA. »* | **à gauche** de la 4 |
-| 6 | *« Ma méthodologie. »* | **à gauche** de la 5 |
-| 7 | *« Premier résultat : la perception. »* | **en dessous** de la 6 |
-| 8 | *« Deuxième résultat : les freins. »* | **à droite** de la 7 |
-| 9 | *« Troisième résultat : le dirigeant. »* | **à droite** de la 8 |
-| 10 | *« Mes préconisations. »* | **en dessous** de la 9 |
-| 11 | *« En conclusion… »* | **à gauche** de la 10 |
-| 12 | *« Et pour la version animée… »* | **à gauche** de la 11 |
+| 1 | *« L'intégration de l'IA dans les PME… »* (accroche) | Carte-titre |
+| 2 | *« D'abord, le contexte. »* | ≈ 14 % du PIB mondial (IA, 2030) |
+| 3 | *« D'où ma problématique. »* | ? |
+| 4 | *« Ce que dit la théorie sur la PME. »* | < 250 salariés |
+| 5 | *« …et sur l'IA. »* | 2 visages (atout / risque) |
+| 6 | *« Ma méthodologie. »* | 8 entretiens |
+| 7 | *« Premier résultat : la perception. »* | 6/8 utilisent déjà l'IA |
+| 8 | *« Deuxième résultat : les freins. »* | ≠ (un frein par profil) |
+| 9 | *« Troisième résultat : le dirigeant. »* | 8/8 citent le dirigeant |
+| 10 | *« Mes préconisations. »* | 3 leviers |
+| 11 | *« En conclusion… »* | ↔ humain / organisation |
+| 12 | *« Et pour la version animée… »* | QR code |
 
-*(C'est exactement ce que t'indiquent les flèches ambre : → à droite, ← à gauche, ↓ en dessous.)*
+*(Tu poses ligne par ligne, dans l'ordre des numéros — le badge en haut à gauche te guide.)*
 
 À la fin, **tout ton raisonnement est visible d'un coup d'œil** — idéal pour les questions.
 
