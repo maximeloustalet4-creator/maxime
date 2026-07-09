@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Jeu de cartes de soutenance — format carte à jouer paysage 88.9x63.5mm.
-Fronts illustrés (parcours) + versos = mosaïque du logo Éklore (grille 3x4)."""
+"""Jeu de cartes 88.9x63.5mm paysage. Les 12 fronts, posés en 3x4 (parcours serpent),
+forment UNE infographie continue (fil conducteur + noeuds + flèches de liaison).
+Versos = mosaïque du vrai logo Éklore."""
 import json, os
 SCR=os.path.dirname(os.path.abspath(__file__))
 fonts=json.load(open(os.path.join(SCR,"fonts.json")))
@@ -25,156 +26,134 @@ ICONS={
  "clipboard":'<rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 12l2 2 4-4"/>',
  "flag":'<path d="M5 21V4"/><path d="M5 4h12l-2.2 3.5L17 11H5"/>',
  "qr":'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M20 14v.01M14 20v.01M20 20v.01M17 17h.01"/>',
+ "chev":'<path d="M8 4l8 8-8 8"/>',
 }
 def ic(n,c,s,sw=1.7): return '<svg viewBox="0 0 24 24" fill="none" stroke="%s" stroke-width="%s" stroke-linecap="round" stroke-linejoin="round" style="width:%smm;height:%smm">%s</svg>'%(c,sw,s,s,ICONS[n])
+def chev(rot,c,s,sw=3): return '<svg viewBox="0 0 24 24" fill="none" stroke="%s" stroke-width="%s" stroke-linecap="round" stroke-linejoin="round" style="width:%smm;height:%smm;transform:rotate(%sdeg)">%s</svg>'%(c,sw,s,s,rot,ICONS["chev"])
 
-NAVY="#0B2A4A"; NAVYD="#07213C"; SLATE="#3D6A8E"; GREEN="#2F8B5D"; TEAL="#2E8B8B"; AMBER="#E6A339"; AMBERD="#B4770F"; PLUM="#7A4E8C"
-INK="#18243C"; GREY="#55607A"; PAPER="#FCFBF8"; CREAM="#F7F2E8"; LINE="#E6DFD3"
+NAVY="#0B2A4A"; NAVYD="#07213C"; SLATE="#3D6A8E"; GREEN="#2F8B5D"; TEAL="#2E8B8B"; AMBER="#E6A339"; AMBERD="#B4770F"
+INK="#18243C"; GREY="#55607A"; PAPER="#FCFBF8"; LINE="#E6DFD3"
 COLS,ROWS=3,4
+POS=[(0,0),(0,1),(0,2),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2),(3,2),(3,1),(3,0)]  # parcours serpent
 
-# (num, section, icon, bandcolor, ludique, quote, author)  title derived
+def outdir(n):
+    if n>=12: return None
+    (ra,ca),(rb,cb)=POS[n-1],POS[n]
+    if rb==ra: return "R" if cb>ca else "L"
+    return "D"
+def in_from_top(n):
+    if n<=1: return False
+    (ra,ca),(rb,cb)=POS[n-2],POS[n-1]
+    return rb==ra+1
+
+# (num, section, icon, color, title, ludique, quote, author)
 C=[
- (1,"Ouverture","spark",NAVY,"L'intégration de l'IA dans les PME",
-   "Entre opportunités perçues et freins organisationnels — le cas d'Arla Groupe.",None,None),
- (2,"Contexte","bolt",AMBER,"Le contexte",
-   "L'IA est partout. La PME, elle, a un petit budget et de grosses habitudes.",None,None),
- (3,"Problématique","target",AMBERD,"La problématique",
-   "Adopter l'IA sans trahir sa culture, ses moyens et sa façon de travailler ?",None,"Perception · freins · spécificités PME"),
- (4,"Cadre · la PME","book",SLATE,"La PME en théorie",
-   "Pas une mini grande-entreprise : le patron est partout, les traditions comptent.",None,"Torrès · Schein · Nassou & Bennani"),
- (5,"Cadre · l'IA","chip",SLATE,"L'IA en théorie",
-   "Du temps gagné et de meilleures décisions… mais gare à trop s'y fier.",None,"Radoui & Cherradi · Kokina · Soro Torna"),
- (6,"Méthode","beaker",TEAL,"La méthode",
-   "J'ai fait parler le terrain : 8 entretiens, du dirigeant à l'ouvrier, de 18 à 60 ans.",None,"Qualitatif · 3 profils × 3 âges"),
- (7,"Résultat 1","eye",NAVY,"La perception",
-   "Plutôt bien vue ! Mais chacun bricole dans son coin.","Le béton ne se verse pas de lui-même.",None),
- (8,"Résultat 2","shield",NAVY,"Les freins",
-   "Le vrai frein change selon les gens — et la peur de perdre la main.","40 ans qu'on travaille comme ça.",None),
- (9,"Résultat 3","users",NAVY,"Le dirigeant",
-   "Le déclencheur, c'est le patron : 8 personnes sur 8 le disent.","Si les dirigeants ne sont pas convaincus, ça traîne.",None),
- (10,"Préconisations","clipboard",AMBERD,"Les préconisations",
-   "3 leviers : un cadre commun, la formation par les collègues, une décision partagée.",None,None),
- (11,"Conclusion","flag",NAVYD,"La conclusion",
-   "L'IA en PME : autant d'humain que d'organisation. Les spécificités ne sont pas un mur.",None,None),
+ (1,"Ouverture","spark",NAVY,"L'intégration de l'IA dans les PME","Entre opportunités perçues et freins — le cas d'Arla Groupe.",None,None),
+ (2,"Contexte","bolt",AMBER,"Le contexte","L'IA est partout. La PME, elle, a un petit budget et de grosses habitudes.",None,None),
+ (3,"Problématique","target",AMBERD,"La problématique","Adopter l'IA sans trahir sa culture, ses moyens et sa façon de travailler ?",None,"Perception · freins · spécificités"),
+ (4,"Cadre · PME","book",SLATE,"La PME en théorie","Pas une mini grande-entreprise : le patron est partout.",None,"Torrès · Schein · Nassou & Bennani"),
+ (5,"Cadre · IA","chip",SLATE,"L'IA en théorie","Du temps gagné… mais gare à trop s'y fier.",None,"Radoui & Cherradi · Kokina · Soro Torna"),
+ (6,"Méthode","beaker",TEAL,"La méthode","8 entretiens, du dirigeant à l'ouvrier, de 18 à 60 ans.",None,"Qualitatif · 3 profils × 3 âges"),
+ (7,"Résultat 1","eye",NAVY,"La perception","Plutôt bien vue ! Mais chacun bricole dans son coin.","Le béton ne se verse pas de lui-même.",None),
+ (8,"Résultat 2","shield",NAVY,"Les freins","Le frein change selon les gens — et la peur de perdre la main.","40 ans qu'on travaille comme ça.",None),
+ (9,"Résultat 3","users",NAVY,"Le dirigeant","Le déclencheur, c'est le patron : 8 sur 8 le disent.","Si les dirigeants ne sont pas convaincus, ça traîne.",None),
+ (10,"Préconisations","clipboard",AMBERD,"Les préconisations","Cadre commun, formation par les collègues, décision partagée.",None,None),
+ (11,"Conclusion","flag",NAVYD,"La conclusion","Autant d'humain que d'organisation. Les spécificités ne sont pas un mur.",None,None),
  (12,"QR code","qr",NAVY,"Pour aller plus loin",None,None,None),
 ]
 
-def rc(n): i=n-1; return (i//COLS, i%COLS)
-def nextdir(n):
-    if n==12: return ("fin","Fin")
-    r,c=rc(n)
-    if c==COLS-1: return ("row","Rangée suivante, à gauche")
-    return ("right","À droite")
-
-def minimap(n):
-    cells=""
-    nd,_=nextdir(n); nn=n+1 if nd!="fin" else -1
-    for r in range(ROWS):
-        for c in range(COLS):
-            idx=r*COLS+c+1
-            if idx==n: st="background:%s"%AMBER
-            elif idx<n: st="background:rgba(230,163,57,.30)"
-            else: st="background:rgba(11,42,74,.10)"
-            if idx==nn: st+=";box-shadow:inset 0 0 0 .45mm %s"%AMBER
-            cells+='<span style="%s"></span>'%st
-    return '<div class="mmap">%s</div>'%cells
-
-def cue(n):
-    nd,label=nextdir(n)
-    arrow={"right":"→","row":"↵","fin":"●"}[nd]
-    col=AMBERD if nd!="fin" else GREEN
-    txt=("Suivante : %s"%label) if nd!="fin" else "Fin du parcours"
-    return '<div class="cue"><span class="arw" style="color:%s">%s</span><span class="cuetxt">%s</span>%s</div>'%(col,arrow,txt,minimap(n))
-
-def confetti(c1,c2):
-    return ('<span class="cf" style="top:3mm;right:4mm;width:2mm;height:2mm;background:%s"></span>'
-            '<span class="cf" style="top:5.5mm;right:2.4mm;width:1.3mm;height:1.3mm;background:%s"></span>'
-            '<span class="cf" style="top:2.2mm;right:7mm;width:1.1mm;height:1.1mm;background:%s"></span>')%(c1,c2,c1)
-
-def front(n,section,icon,bg,title,ludique,quote,author):
-    fg="#fff"
-    numtint="rgba(255,255,255,.9)"
-    # left panel
-    left=('<div class="lp" style="background:%s">'%bg
-      +'<span class="blob" style="background:rgba(255,255,255,.10);width:26mm;height:26mm;top:-6mm;left:-6mm"></span>'
-      +'<span class="blob" style="background:rgba(255,255,255,.08);width:16mm;height:16mm;bottom:-4mm;right:-4mm"></span>'
-      +'<div class="iconc">%s</div>'%ic(icon,bg,8.5,1.8)
-      +'<div class="num serif" style="color:%s">%s</div>'%(numtint, (str(n) if n<12 else "★"))
-      +'<div class="seclab">%s</div>'%section.upper()
-      +'</div>')
-    # right content
+def rail(n):
+    """Bande de liaison en bas : ligne continue + noeud central + flèche vers la suivante."""
+    od=outdir(n); topin=in_from_top(n)
+    parts='<div class="line"></div>'
+    # noeud central
+    endc=GREEN if n==12 else AMBER
+    parts+='<div class="node" style="background:%s"></div>'%endc
+    # flèche de sortie
+    if od=="R":
+        parts+='<div class="ochev" style="right:1.6mm">%s</div>'%chev(0,AMBER,3.4)
+    elif od=="L":
+        parts+='<div class="ochev" style="left:1.6mm">%s</div>'%chev(180,AMBER,3.4)
+    elif od=="D":
+        parts+='<div class="drop"></div><div class="dchev">%s</div>'%chev(90,AMBER,3.4)
     if n==12:
-        right=('<div class="rc qrc">'
-          +'<div class="ttl serif" style="text-align:center;font-size:11pt">Pour aller plus loin</div>'
-          +'<div class="qwrap"><div class="qbox">%s</div>'%qr
-          +'<div class="qtxt">Scanne pour voir le<br><b>diaporama animé</b>.<br><span style="color:%s">Réalisé avec Claude — l\'IA assiste, l\'humain décide.</span></div></div>'%AMBERD
-          +cue(n)+'</div>')
+        parts+='<div class="ochev" style="right:1.6mm">%s</div>'%chev(0,GREEN,3.4)
+    # entrée par le haut (flèche descendante sur le bandeau)
+    topmark='<div class="tdrop"></div><div class="tchev">%s</div>'%chev(90,"#fff",3) if topin else ''
+    return '<div class="rail">%s</div>%s'%(parts,topmark)
+
+def front(n,section,icon,col,title,ludique,quote,author):
+    band=('<div class="band" style="background:%s">'%col
+      +'<span class="blob"></span>'
+      +'<div class="bnum serif">%s</div>'%(str(n) if n<12 else "★")
+      +'<div class="bic">%s</div>'%ic(icon,col,5.4,1.9)
+      +'<div class="bsec">%s</div></div>'%section.upper())
+    if n==12:
+        body=('<div class="body qbody">'
+          +'<div class="qbox">%s</div>'%qr
+          +'<div class="qtxt"><b class="serif" style="font-size:11pt;color:%s">Pour aller plus loin</b><br>Scanne pour le <b>diaporama animé</b>.<br><span style="color:%s">Réalisé avec Claude — l\'IA assiste, l\'humain décide.</span></div></div>'%(NAVY,AMBERD))
     else:
         q='<div class="quote">« %s »</div>'%quote if quote else ''
         a='<div class="auth">%s</div>'%author if author else ''
-        right=('<div class="rc">'+confetti(AMBER,SLATE)
-          +'<div class="ttl serif">%s</div>'%title
-          +'<div class="lud">%s</div>'%ludique
-          +q+a+'<div class="grow"></div>'+cue(n)+'</div>')
-    return '<div class="card">%s%s</div>'%(left,right)
+        wm='<div class="wm">%s</div>'%ic(icon,col,30,1.3)
+        body=('<div class="body">'+wm+'<span class="cf cf1"></span><span class="cf cf2"></span>'
+          +'<div class="ttl serif">%s</div><div class="lud">%s</div>%s%s</div>'%(title,ludique,q,a))
+    return '<div class="card">%s%s%s</div>'%(band,body,rail(n))
 
 def back(n,mirror=True):
-    r,c=rc(n)
-    posx=(c/(COLS-1))*100 if COLS>1 else 0
-    posy=(r/(ROWS-1))*100 if ROWS>1 else 0
+    r,c=POS[n-1]
+    posx=(c/(COLS-1))*100; posy=(r/(ROWS-1))*100
     mir="transform:scaleX(-1);" if mirror else ""
-    return ('<div class="card back"><div class="tile" style="%sbackground-image:url(%s);background-size:%d%% %d%%;background-position:%.4f%% %.4f%%"></div></div>'
-            %(mir,POSTER,COLS*100,ROWS*100,posx,posy))
+    return '<div class="card back"><div class="tile" style="%sbackground-image:url(%s);background-size:%d%% %d%%;background-position:%.4f%% %.4f%%"></div></div>'%(mir,POSTER,COLS*100,ROWS*100,posx,posy)
 
-fronts=[front(*c) for c in C]
-backs=[back(c[0]) for c in C]
-reveal=[back(c[0],mirror=False) for c in C]
-
-def sheets(cards, per=8, cols=2):
-    out=""
-    for i in range(0,len(cards),per):
-        out+='<div class="sheet">%s</div>'%("".join(cards[i:i+per]))
+fronts=[front(*c) for c in C]; backs=[back(c[0]) for c in C]; reveal=[back(c[0],False) for c in C]
+def sheets(cards):
+    out="";
+    for i in range(0,len(cards),8): out+='<div class="sheet">%s</div>'%("".join(cards[i:i+8]))
     return out
 
 CSS=FONTS+"""
 *{box-sizing:border-box} body{margin:0;background:#DED9CF;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
 .serif{font-family:'Fraunces',Georgia,serif}
-.sheet{width:210mm;height:297mm;background:#fff;margin:8mm auto;display:grid;grid-template-columns:88.9mm 88.9mm;grid-auto-rows:63.5mm;
-  justify-content:center;align-content:start;gap:6mm 8mm;padding:14mm 0;page-break-after:always;box-shadow:0 3mm 8mm rgba(0,0,0,.15)}
-.card{width:88.9mm;height:63.5mm;background:%s;border-radius:3mm;overflow:hidden;display:flex;position:relative;
-  outline:.2mm dashed #C9CFD8;box-shadow:0 .6mm 1.6mm rgba(0,0,0,.06)}
-.lp{width:27mm;flex:none;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;color:#fff}
-.blob{position:absolute;border-radius:50%%;display:block}
-.iconc{width:15mm;height:15mm;border-radius:50%%;background:#fff;display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 1mm 2mm rgba(0,0,0,.12)}
-.num{font-size:22pt;font-weight:600;line-height:1;margin-top:2mm;z-index:1}
-.seclab{font-size:5.4pt;font-weight:700;letter-spacing:.12em;margin-top:1mm;opacity:.9;z-index:1;text-align:center;padding:0 1mm}
-.rc{flex:1;padding:4.5mm 5mm 4mm;display:flex;flex-direction:column;position:relative}
+.sheet{width:210mm;height:297mm;background:#fff;margin:8mm auto;display:grid;grid-template-columns:88.9mm 88.9mm;grid-auto-rows:63.5mm;justify-content:center;align-content:start;gap:6mm 8mm;padding:14mm 0;page-break-after:always;box-shadow:0 3mm 8mm rgba(0,0,0,.15)}
+.card{width:88.9mm;height:63.5mm;background:%s;border-radius:3mm;overflow:hidden;display:flex;flex-direction:column;position:relative;outline:.2mm dashed #C9CFD8}
+.band{height:14mm;flex:none;display:flex;align-items:center;gap:2.6mm;padding:0 5mm;color:#fff;position:relative;overflow:hidden}
+.blob{position:absolute;width:20mm;height:20mm;border-radius:50%%;background:rgba(255,255,255,.10);right:-5mm;top:-6mm}
+.bnum{font-size:19pt;font-weight:600;line-height:1;z-index:1}
+.bic{width:8.4mm;height:8.4mm;border-radius:50%%;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;z-index:1}
+.bsec{margin-left:auto;font-size:6.2pt;font-weight:700;letter-spacing:.11em;text-align:right;z-index:1}
+.body{flex:1;padding:3.4mm 5mm 1mm;position:relative;overflow:hidden}
+.wm{position:absolute;right:-5mm;bottom:-7mm;opacity:.06;z-index:0}
+.body>.ttl,.body>.lud,.body>.quote,.body>.auth{position:relative;z-index:1}
 .cf{position:absolute;border-radius:50%%;display:block}
-.ttl{font-size:13pt;font-weight:600;color:%s;line-height:1.05;margin-bottom:1.6mm}
-.lud{font-size:8.2pt;line-height:1.34;color:%s}
-.quote{font-family:'Fraunces',serif;font-style:italic;font-size:8.4pt;color:%s;margin-top:1.8mm;border-left:.8mm solid %s;padding-left:2mm;line-height:1.2}
-.auth{font-size:6.6pt;color:%s;margin-top:1.8mm;font-style:italic}
-.grow{flex:1}
-.cue{display:flex;align-items:center;gap:1.6mm;border-top:.3mm solid %s;padding-top:1.8mm;margin-top:1.8mm}
-.arw{font-size:11pt;font-weight:700;line-height:1}
-.cuetxt{font-size:6.6pt;font-weight:700;color:%s;flex:1;line-height:1.1}
-.mmap{display:grid;grid-template-columns:repeat(3,2.1mm);grid-auto-rows:2.1mm;gap:.55mm}
-.mmap span{width:2.1mm;height:2.1mm;border-radius:.35mm;display:block}
-.qrc{align-items:center;padding:3.5mm 4mm}
-.qwrap{flex:1;display:flex;align-items:center;gap:3mm;width:100%%}
-.qbox{width:24mm;height:24mm;flex:none;background:#fff;border:.3mm solid %s;border-radius:1.5mm;padding:1.5mm}
+.cf1{width:2mm;height:2mm;background:%s;top:2.4mm;right:4mm}
+.cf2{width:1.3mm;height:1.3mm;background:%s;top:4.6mm;right:2.2mm}
+.ttl{font-size:12.5pt;font-weight:600;color:%s;line-height:1.06;margin-bottom:1.4mm}
+.lud{font-size:8.2pt;line-height:1.32;color:%s}
+.quote{font-family:'Fraunces',serif;font-style:italic;font-size:8.2pt;color:%s;border-left:.8mm solid %s;padding-left:2mm;margin-top:1.6mm;line-height:1.2}
+.auth{font-size:6.6pt;color:%s;font-style:italic;margin-top:1.4mm}
+/* rail de liaison */
+.rail{height:8mm;flex:none;position:relative}
+.line{position:absolute;left:0;right:0;top:3.9mm;height:.9mm;background:%s}
+.node{position:absolute;left:calc(50%% - 3mm);top:1.3mm;width:6mm;height:6mm;border-radius:50%%;border:.8mm solid #fff;box-shadow:0 0 0 .3mm %s}
+.ochev{position:absolute;top:1.7mm;display:flex}
+.drop{position:absolute;left:calc(50%% - .45mm);top:3.9mm;width:.9mm;height:4.1mm;background:%s}
+.dchev{position:absolute;left:calc(50%% - 1.7mm);top:4.8mm}
+.tdrop{position:absolute;left:calc(50%% - .45mm);top:0;width:.9mm;height:3.4mm;background:%s;z-index:2}
+.tchev{position:absolute;left:calc(50%% - 1.5mm);top:2.2mm;z-index:2}
+.qbody{display:flex;align-items:center;gap:3mm;padding:2.6mm 5mm}
+.qbox{width:22mm;height:22mm;flex:none;background:#fff;border:.3mm solid %s;border-radius:1.5mm;padding:1.4mm}
 .qbox svg{width:100%%;height:100%%;display:block}
-.qtxt{font-size:6.8pt;color:%s;line-height:1.4}
-.back{padding:0}
-.tile{width:100%%;height:100%%;background-repeat:no-repeat}
+.qtxt{font-size:6.8pt;color:%s;line-height:1.42}
+.back{padding:0}.tile{width:100%%;height:100%%;background-repeat:no-repeat}
 .reveal{max-width:820px;margin:16px auto;padding:16px}
 .revgrid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:0;border:1px solid %s;border-radius:8px;overflow:hidden}
-.revgrid .card{width:auto;height:auto;aspect-ratio:889/635;outline:none;border-radius:0;box-shadow:none}
+.revgrid .card{width:auto;height:auto;aspect-ratio:889/635;outline:none;border-radius:0}
 .revcap{text-align:center;color:#555;font-size:12px;margin-top:10px}
 @media print{ body{background:#fff} .sheet{margin:0;box-shadow:none} .noprint{display:none!important} }
-"""%(PAPER,NAVY,GREY,AMBERD,AMBER,SLATE,LINE,INK,LINE,GREY,LINE)
+"""%(PAPER,AMBER,SLATE,NAVY,GREY,AMBERD,AMBER,GREY,AMBER,AMBER,AMBER,AMBER,LINE,GREY,LINE)
 
-reveal_html='<div class="reveal noprint"><div class="revgrid">%s</div><div class="revcap">Vérification — versos assemblés (après retournement) : le logo Éklore.</div></div>'%("".join(reveal))
+reveal_html='<div class="reveal noprint"><div class="revgrid">%s</div><div class="revcap">Versos assemblés (après retournement) : le logo Éklore.</div></div>'%("".join(reveal))
 HTML='<title>Jeu de cartes — Soutenance MFE</title><style>%s</style>%s%s%s'%(CSS,reveal_html,sheets(fronts),sheets(backs))
 open(os.path.join(SCR,"cards.html"),"w",encoding="utf-8").write(HTML)
-print("cards.html OK — format 88.9x63.5 paysage, grille %dx%d, 12 cartes"%(COLS,ROWS))
+print("cards.html OK — parcours serpent, fil conducteur continu")

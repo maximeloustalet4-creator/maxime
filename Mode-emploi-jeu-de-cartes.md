@@ -6,21 +6,23 @@
 
 ---
 
-## 🗺️ La table finale (grille 3 × 4)
+## 🗺️ La table finale — une infographie continue (grille 3 × 4)
 
-Tu remplis **rangée par rangée, de gauche à droite**. Chaque carte t'indique où poser la suivante (flèche + mini-plan en bas à droite). Table totale ≈ **27 × 25 cm**.
+Les fronts sont conçus pour **s'enchaîner** : un **fil conducteur ambré** (ligne + nœuds + flèches) part de la carte 1 et **serpente** jusqu'à la 12. Une fois toutes posées, l'ensemble forme **une seule grande infographie**. Table totale ≈ **27 × 25 cm**.
+
+Le parcours suit un **serpent** (la flèche au bas de chaque carte te montre toujours la suite) :
 
 ```
-┌───────────────┬───────────────┬───────────────┐
-│ 1 OUVERTURE   │ 2 CONTEXTE    │ 3 PROBLÉMAT.  │  ↵ rangée suivante
-├───────────────┼───────────────┼───────────────┤
-│ 4 CADRE · PME │ 5 CADRE · IA  │ 6 MÉTHODE     │  ↵ rangée suivante
-├───────────────┼───────────────┼───────────────┤
-│ 7 RÉSULTAT 1  │ 8 RÉSULTAT 2  │ 9 RÉSULTAT 3  │  ↵ rangée suivante
-├───────────────┼───────────────┼───────────────┤
-│ 10 PRÉCONIS.  │ 11 CONCLUSION │ 12 QR CODE    │  ● fin
-└───────────────┴───────────────┴───────────────┘
+   1  →  2  →  3
+                ↓
+   6  ←  5  ←  4
+   ↓
+   7  →  8  →  9
+                ↓
+  12  ← 11  ← 10          (● = fin, à gauche)
 ```
+
+> 💡 Tu n'as rien à mémoriser : **suis la flèche ambre**. Elle pointe à droite, à gauche ou vers le bas selon la carte.
 
 ---
 
@@ -28,20 +30,22 @@ Tu remplis **rangée par rangée, de gauche à droite**. Chaque carte t'indique 
 
 Pose la carte **au moment où tu annonces le titre**, en **un seul geste**, puis reviens à ton oral.
 
-| # | Tu annonces… | Tu poses |
+| # | Tu annonces… | Tu poses la carte… |
 |---|---|---|
-| 1 | *« L'intégration de l'IA dans les PME… »* (accroche) | Carte 1 |
-| 2 | *« D'abord, le contexte. »* | Carte 2, à droite |
-| 3 | *« D'où ma problématique. »* | Carte 3, à droite → **rangée suivante** |
-| 4 | *« Ce que dit la théorie sur la PME. »* | Carte 4 (à gauche, 2ᵉ rangée) |
-| 5 | *« …et sur l'IA. »* | Carte 5, à droite |
-| 6 | *« Ma méthodologie. »* | Carte 6, à droite → **rangée suivante** |
-| 7 | *« Premier résultat : la perception. »* | Carte 7 (à gauche, 3ᵉ rangée) |
-| 8 | *« Deuxième résultat : les freins. »* | Carte 8, à droite |
-| 9 | *« Troisième résultat : le dirigeant. »* | Carte 9, à droite → **rangée suivante** |
-| 10 | *« Mes préconisations. »* | Carte 10 (à gauche, 4ᵉ rangée) |
-| 11 | *« En conclusion… »* | Carte 11, à droite |
-| 12 | *« Et pour la version animée… »* | Carte 12 (QR), à droite |
+| 1 | *« L'intégration de l'IA dans les PME… »* (accroche) | en haut à gauche |
+| 2 | *« D'abord, le contexte. »* | **à droite** de la 1 |
+| 3 | *« D'où ma problématique. »* | **à droite** de la 2 |
+| 4 | *« Ce que dit la théorie sur la PME. »* | **en dessous** de la 3 |
+| 5 | *« …et sur l'IA. »* | **à gauche** de la 4 |
+| 6 | *« Ma méthodologie. »* | **à gauche** de la 5 |
+| 7 | *« Premier résultat : la perception. »* | **en dessous** de la 6 |
+| 8 | *« Deuxième résultat : les freins. »* | **à droite** de la 7 |
+| 9 | *« Troisième résultat : le dirigeant. »* | **à droite** de la 8 |
+| 10 | *« Mes préconisations. »* | **en dessous** de la 9 |
+| 11 | *« En conclusion… »* | **à gauche** de la 10 |
+| 12 | *« Et pour la version animée… »* | **à gauche** de la 11 |
+
+*(C'est exactement ce que t'indiquent les flèches ambre : → à droite, ← à gauche, ↓ en dessous.)*
 
 À la fin, **tout ton raisonnement est visible d'un coup d'œil** — idéal pour les questions.
 
